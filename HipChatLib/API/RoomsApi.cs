@@ -31,12 +31,12 @@ namespace HipChat.API
             return await _connection.PostRequest("room/" + roomName + "/message", new { message = message });
         }
 
-        public async Task<bool> SendNotification(string roomName, string message, bool html = false)
+        public async Task<bool> SendNotification(string roomName, string message, string from, bool html = false)
         {
             return await _connection.PostRequest("room/" + roomName + "/notification", 
                 new { message = message,
                     color = "yellow",
-                    from = "Poky",
+                    from = from,
                     message_format = html ? "html" : "text"
                 });
         }
